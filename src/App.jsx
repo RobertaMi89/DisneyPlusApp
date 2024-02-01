@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <Container fluid className="background"></Container>
+      <Container fluid className="background bg-gradient"></Container>
     </>
   );
 }
