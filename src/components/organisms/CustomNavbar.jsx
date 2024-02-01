@@ -1,4 +1,3 @@
-import { Container } from "react-bootstrap";
 import {
   HouseFill,
   Search,
@@ -8,6 +7,7 @@ import {
   TvFill,
   ThreeDotsVertical,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -16,47 +16,57 @@ import MyProfile from "../atoms/MyProfile";
 
 const CustomNavbar = () => {
   return (
-    <Navbar expand="lg" className="bgCustomNav d-flex flex-wrap">
-      <Container fluid>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
+    <Navbar className="bgCustomNav">
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="d-flex flex-row my-2 my-lg-0">
+          <Nav.Link href="#action1" className="me-2 text-light">
+            <Logo />
+          </Nav.Link>
+          <Link to={"/"} className="me-2">
+            <HouseFill />
+            HOME
+          </Link>
+          <Link to={"search"} className="me-2">
+            <Search />
+            CERCA
+          </Link>
+          <Link to={"laTuaLista"} className="me-2">
+            <Plus />
+            LA TUA LISTA
+          </Link>
+          <Link to={"originals"} className="d-sm-none">
+            <StarFill />
+            ORIGINALS
+          </Link>
+          <Link to={"film"} className="d-sm-none">
+            <Film />
+            FILM
+          </Link>
+          <Link to={"serie"} className="d-sm-none">
+            <TvFill />
+            SERIE
+          </Link>
+
+          <NavDropdown
+            title={<ThreeDotsVertical />}
+            id="responsive-navbar-nav"
+            className="navDropdown justify-content-end"
           >
-            <Nav.Link href="#action1">
-              <Logo />
-            </Nav.Link>
-            <Nav.Link href="#action1">
-              <HouseFill />
-              HOME
-            </Nav.Link>
-            <Nav.Link href="#action2">
-              <Search />
-              CERCA
-            </Nav.Link>
-            <Nav.Link href="#action1">
-              <Plus />
-              LA TUA LISTA
-            </Nav.Link>
-            <Nav.Link href="#action2" className="d-sm-none">
+            <NavDropdown.Item href="#action3">
               <StarFill />
               ORIGINALS
-            </Nav.Link>
-            <Nav.Link href="#action2" className="d-sm-none">
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action4">
               <Film />
               FILM
-            </Nav.Link>
-            <Nav.Link href="#action2" className="d-sm-none">
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action5">
               <TvFill />
               SERIE
-            </Nav.Link>
-
-            <NavDropdown
-              title={<ThreeDotsVertical />}
-              id="responsive-navbar-nav"
-              className="navDropdown"
-            >
+            </NavDropdown.Item>
+          </NavDropdown>
+          <Nav>
+            <NavDropdown title={<MyProfile />} id="responsive-navbar-nav">
               <NavDropdown.Item href="#action3">
                 <StarFill />
                 ORIGINALS
@@ -70,13 +80,9 @@ const CustomNavbar = () => {
                 SERIE
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav>
-              <Nav.Link href="#deets">{<MyProfile />}</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes"></Nav.Link>
-            </Nav>
           </Nav>
-        </Navbar.Collapse>
-      </Container>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };
