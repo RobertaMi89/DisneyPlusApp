@@ -13,60 +13,56 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../atoms/Logo";
 import MyProfile from "../atoms/MyProfile";
+import { Container } from "react-bootstrap";
 
 const CustomNavbar = () => {
   return (
     <Navbar className="bgCustomNav">
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="d-flex flex-row my-2 my-lg-0">
-          <Nav.Link href="#action1" className="me-2 text-light">
+        <Nav className="d-flex flex-row justify-content-between align-items-center ">
+          <Nav.Link href="#home" className="me-2 text-light">
             <Logo />
           </Nav.Link>
-          <Link to={"/"} className="me-2">
-            <HouseFill />
-            HOME
-          </Link>
-          <Link to={"search"} className="me-2">
-            <Search />
-            CERCA
-          </Link>
-          <Link to={"laTuaLista"} className="me-2">
-            <Plus />
-            LA TUA LISTA
-          </Link>
-          <Link to={"originals"} className="d-sm-none">
-            <StarFill />
-            ORIGINALS
-          </Link>
-          <Link to={"film"} className="d-sm-none">
-            <Film />
-            FILM
-          </Link>
-          <Link to={"serie"} className="d-sm-none">
-            <TvFill />
-            SERIE
-          </Link>
-
-          <NavDropdown
-            title={<ThreeDotsVertical />}
-            id="responsive-navbar-nav"
-            className="navDropdown justify-content-end"
-          >
-            <NavDropdown.Item href="#action3">
-              <StarFill />
+          <Container className="d-flex align-items-center">
+            <Link to={"/"} className="a mx-2 text-light">
+              <HouseFill className="icon" />
+              HOME
+            </Link>
+            <Link to={"search"} className="a mx-2 text-light">
+              <Search className="icon" />
+              CERCA
+            </Link>
+            <Link to={"laTuaLista"} className="a mx-2 text-light">
+              <Plus className="icon" />
+              LA TUA LISTA
+            </Link>
+            <Link
+              to={"originals"}
+              className="a mx-2 text-light d-lg-block  d-sm-none"
+            >
+              <StarFill className="icon" />
               ORIGINALS
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action4">
-              <Film />
+            </Link>
+            <Link
+              to={"film"}
+              className="a mx-2 text-light d-lg-block d-sm-none"
+            >
+              <Film className="icon" />
               FILM
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action5">
-              <TvFill />
+            </Link>
+            <Link
+              to={"serie"}
+              className="a mx-2 text-light d-lg-block d-sm-none"
+            >
+              <TvFill className="icon" />
               SERIE
-            </NavDropdown.Item>
-          </NavDropdown>
-          <Nav>
-            <NavDropdown title={<MyProfile />} id="responsive-navbar-nav">
+            </Link>
+
+            <NavDropdown
+              title={<ThreeDotsVertical />}
+              id="responsive-navbar-nav"
+              className="navDropdown text-light"
+            >
               <NavDropdown.Item href="#action3">
                 <StarFill />
                 ORIGINALS
@@ -80,10 +76,15 @@ const CustomNavbar = () => {
                 SERIE
               </NavDropdown.Item>
             </NavDropdown>
-          </Nav>
+
+            <Nav>
+              <MyProfile />
+            </Nav>
+          </Container>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
 };
+
 export default CustomNavbar;
